@@ -1,2 +1,7 @@
-FROM vimal13/apache-webserver-php
-COPY index.php /var/www/html/index.php
+FROM centos
+RUN yum install httpd -y
+RUN yum install php -y
+COPY index.php /var/www/html/
+
+CMD [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]
+EXPOSE 80
